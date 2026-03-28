@@ -27,7 +27,6 @@
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--body);
       font-size: 17.5px;
@@ -35,7 +34,6 @@
       color: var(--text);
       background: var(--bg);
     }
-
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -47,36 +45,35 @@
 
     /* ══════════════════════════════════════════════
        HEADER
+       Layout: [photo | info-block]
+       Info block: name → role → supervisors → divider → links + badge
     ══════════════════════════════════════════════ */
     header {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 0 36px;
-      padding: 44px 0 36px;
+      padding: 48px 0 36px;
       border-bottom: 3px solid var(--blue);
       margin-bottom: 52px;
-      align-items: start;
     }
 
-    /* ── Profile photo ── */
-    .hd-photo {
+    .hd-inner {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding-top: 4px;
+      align-items: flex-start;
+      gap: 36px;
+    }
+
+    /* ── Photo ────────────────────────────────── */
+    .hd-photo {
+      flex-shrink: 0;
     }
     .photo-frame {
-      width: 120px;
-      height: 150px;             /* passport ratio ~2:2.5 */
+      width: 118px;
+      height: 148px;
       border-radius: 4px;
       overflow: hidden;
-      border: 2px solid var(--rule);
-      background: #e8e6e0;
+      border: 1.5px solid var(--rule);
+      background: #eae8e2;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
     .photo-frame img {
       width: 100%;
@@ -84,28 +81,34 @@
       object-fit: cover;
       display: block;
     }
-    /* placeholder shown when no image */
     .photo-placeholder {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
       color: var(--light);
       text-align: center;
       padding: 10px;
+      height: 100%;
     }
-    .photo-placeholder svg { opacity: 0.45; }
+    .photo-placeholder svg { opacity: 0.4; }
     .photo-placeholder span {
-      font-size: 0.62rem;
-      letter-spacing: 0.06em;
+      font-size: 0.6rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       font-family: var(--body);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
-    /* ── Name & details ── */
-    .hd-info { display: flex; flex-direction: column; gap: 0; }
+    /* ── Info block ───────────────────────────── */
+    .hd-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 4px;
+    }
 
     .hd-name {
       font-family: var(--serif);
@@ -113,8 +116,8 @@
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.05;
-      margin-bottom: 8px;
       color: var(--text);
+      margin-bottom: 8px;
     }
 
     .hd-role {
@@ -122,43 +125,47 @@
       font-size: 1rem;
       font-style: italic;
       line-height: 1.55;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    /* supervisor row */
-    .hd-supervisors {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 0;
+    /* supervisor table — sits cleanly after role */
+    .hd-sv-table {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 4px 14px;
       margin-bottom: 18px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      border-left: 3px solid var(--blue);
-      padding-left: 12px;
-      line-height: 1.65;
+      font-size: 0.88rem;
     }
-    .hd-supervisors .sv-row { width: 100%; }
-    .hd-supervisors .sv-label {
+    .sv-lbl {
+      color: var(--light);
       font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--light);
       font-family: var(--body);
-      display: inline-block;
-      margin-right: 6px;
+      white-space: nowrap;
+      padding-top: 2px;
     }
-    .hd-supervisors a { color: var(--blue); font-style: italic; }
+    .sv-name { color: var(--muted); font-style: italic; }
+    .sv-name a { color: var(--blue); font-style: italic; }
+    .sv-name a:hover { text-decoration: underline; }
+
+    /* thin rule between supervisors and links */
+    .hd-rule {
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 16px;
+    }
 
     .hd-links {
       display: flex;
       flex-wrap: wrap;
       gap: 4px 20px;
       font-size: 0.9rem;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .hd-links a   { color: var(--muted); }
     .hd-links a:hover { color: var(--blue); }
-    .hd-sep       { color: var(--rule); }
+    .hd-sep { color: var(--rule); }
 
     .hd-badge {
       display: inline-block;
@@ -169,10 +176,11 @@
       color: var(--blue);
       background: rgba(42,82,160,0.08);
       border: 1px solid rgba(42,82,160,0.22);
+      align-self: flex-start;
     }
 
     /* ══════════════════════════════════════════════
-       BODY GRID — main + sidebar
+       BODY GRID
     ══════════════════════════════════════════════ */
     .body-grid {
       display: grid;
@@ -181,7 +189,7 @@
       align-items: start;
     }
 
-    /* ══ SECTIONS ══════════════════════════════════ */
+    /* ══ SECTIONS ══════════════════════════════ */
     section { margin-bottom: 46px; }
 
     .sec-label {
@@ -216,10 +224,7 @@
     }
 
     /* ── Publications ── */
-    .pub {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--rule);
-    }
+    .pub { padding: 16px 0; border-bottom: 1px solid var(--rule); }
     .pub:first-of-type { border-top: 1px solid var(--rule); }
     .pub-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
     .pub-yr   { font-size: 0.77rem; color: var(--light); font-style: italic; }
@@ -233,20 +238,14 @@
     }
     .pub-title a { color: inherit; }
     .pub-title a:hover { color: var(--blue); }
-    .pub-authors {
-      font-size: 0.86rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 3px;
-    }
+    .pub-authors { font-size: 0.86rem; color: var(--muted); font-style: italic; margin-bottom: 3px; }
     .pub-authors b { font-style: normal; font-weight: 500; color: var(--text); }
     .pub-venue    { font-size: 0.86rem; color: var(--muted); }
     .pub-venue em { font-style: italic; }
     .pub-links    { margin-top: 6px; display: flex; gap: 14px; }
-    .pub-links a  { font-size: 0.76rem; color: var(--blue); letter-spacing: 0.03em; }
+    .pub-links a  { font-size: 0.76rem; color: var(--blue); }
     .pub-links a::before { content: '↗ '; font-size: 0.7rem; }
 
-    /* badges */
     .badge {
       display: inline-block;
       font-size: 0.64rem;
@@ -265,22 +264,14 @@
     .b-gold   { color: var(--gold);  background: rgba(176,125,34,0.08); border: 1px solid rgba(176,125,34,0.25); }
     .b-rose   { color: var(--rose);  background: rgba(139,34,82,0.07);  border: 1px solid rgba(139,34,82,0.22); }
 
-    /* ── Sidebar items ── */
-    .side-item {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--rule);
-      font-size: 0.92rem;
-    }
+    /* ── Sidebar ── */
+    .side-item { padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 0.92rem; }
     .side-item:first-of-type { border-top: 1px solid var(--rule); }
     .side-yr    { font-size: 0.74rem; color: var(--light); font-style: italic; margin-bottom: 1px; }
     .side-title { color: var(--text); font-weight: 500; font-size: 0.9rem; }
     .side-sub   { color: var(--muted); font-size: 0.81rem; font-style: italic; }
 
-    /* ── Education ── */
-    .edu-item {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--rule);
-    }
+    .edu-item { padding: 12px 0; border-bottom: 1px solid var(--rule); }
     .edu-item:first-of-type { border-top: 1px solid var(--rule); }
     .edu-yr   { font-size: 0.74rem; color: var(--light); font-style: italic; margin-bottom: 3px; }
     .edu-deg  { font-family: var(--serif); font-size: 0.97rem; font-weight: 500; margin-bottom: 2px; line-height: 1.3; }
@@ -288,7 +279,6 @@
     .edu-note { font-size: 0.75rem; color: var(--light); font-style: italic; margin-top: 4px; line-height: 1.5; }
     .edu-note a { color: var(--blue); }
 
-    /* ── Footer ── */
     footer {
       border-top: 1px solid var(--rule);
       padding-top: 18px;
@@ -297,16 +287,13 @@
       font-style: italic;
     }
 
-    /* ══ RESPONSIVE ═══════════════════════════════ */
+    /* ══ RESPONSIVE ══════════════════════════════ */
     @media (max-width: 860px) {
       .body-grid { grid-template-columns: 1fr; }
-      header { grid-template-columns: 100px 1fr; gap: 0 24px; }
-      .photo-frame { width: 90px; height: 112px; }
     }
     @media (max-width: 600px) {
       .page { padding: 0 20px 60px; }
-      header { grid-template-columns: 1fr; }
-      .hd-photo { flex-direction: row; align-items: flex-start; }
+      .hd-inner { flex-direction: column; gap: 20px; }
       .hd-name { font-size: 2rem; }
     }
   </style>
@@ -316,57 +303,65 @@
 
   <!-- ═══ HEADER ══════════════════════════════════════════ -->
   <header>
+    <div class="hd-inner">
 
-    <!-- Profile photo -->
-    <div class="hd-photo">
-      <div class="photo-frame">
-        <!--
-          ╔══════════════════════════════════════════╗
-          ║  HOW TO ADD YOUR PHOTO:                  ║
-          ║                                          ║
-          ║  1. Save your passport-size photo as:    ║
-          ║     photo.jpg                            ║
-          ║     (in the same folder as index.html)   ║
-          ║                                          ║
-          ║  2. Replace the block below with:        ║
-          ║     <img src="photo.jpg"                 ║
-          ║          alt="Rasel Mondal" />           ║
-          ║                                          ║
-          ║  3. Delete the placeholder <div>         ║
-          ╚══════════════════════════════════════════╝
-        -->
-        <img src="photo.jpg" alt="Rasel Mondal" />
-
-    <!-- Name, role, supervisors, links -->
-    <div class="hd-info">
-      <h1 class="hd-name">Rasel Mondal</h1>
-      <p class="hd-role">
-        PhD Scholar · Data Science &amp; Engineering<br />
-        Indian Institute of Science Education and Research Bhopal
-      </p>
-
-      <div class="hd-supervisors">
-        <div class="sv-row">
-          <span class="sv-label">Supervisor</span>
-          <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
-        </div>
-        <div class="sv-row">
-          <span class="sv-label">External</span>
-          <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a>
+      <!-- Photo (left) -->
+      <div class="hd-photo">
+        <div class="photo-frame">
+          <!--
+            TO ADD YOUR PHOTO:
+            1. Place your photo file as  photo.jpg
+               in the same folder as this index.html
+            2. Delete the <div class="photo-placeholder">
+               block below entirely
+            3. Replace it with just one line:
+               <img src="photo.jpg" alt="Rasel Mondal" />
+          -->
+          <div class="photo-placeholder">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <span>photo.jpg<br/>here</span>
+          </div>
         </div>
       </div>
 
-      <div class="hd-links">
-        <a href="mailto:rasel23@iiserb.ac.in">rasel23@iiserb.ac.in</a>
-        <span class="hd-sep">·</span>
-        <a href="https://github.com/Rasel2316" target="_blank" rel="noopener">GitHub</a>
-        <span class="hd-sep">·</span>
-        <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+      <!-- All info (right of photo) -->
+      <div class="hd-info">
+        <h1 class="hd-name">Rasel Mondal</h1>
+
+        <p class="hd-role">
+          PhD Scholar · Data Science &amp; Engineering<br />
+          Indian Institute of Science Education and Research Bhopal
+        </p>
+
+        <!-- Supervisors — sits naturally right after role -->
+        <div class="hd-sv-table">
+          <span class="sv-lbl">Supervisor</span>
+          <span class="sv-name">
+            <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
+          </span>
+          <span class="sv-lbl">Co-supervisor</span>
+          <span class="sv-name">
+            <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a>
+          </span>
+        </div>
+
+        <div class="hd-rule"></div>
+
+        <div class="hd-links">
+          <a href="mailto:rasel23@iiserb.ac.in">rasel23@iiserb.ac.in</a>
+          <span class="hd-sep">·</span>
+          <a href="https://github.com/Rasel2316" target="_blank" rel="noopener">GitHub</a>
+          <span class="hd-sep">·</span>
+          <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+
+        <span class="hd-badge">IEEE ICHI 2026 · Doctoral Consortium</span>
       </div>
 
-      <span class="hd-badge">IEEE ICHI 2026 · Doctoral Consortium</span>
     </div>
-
   </header>
 
   <!-- ═══ BODY GRID ═══════════════════════════════════════ -->
@@ -380,7 +375,7 @@
         <p>
           I am a PhD scholar in the Department of Data Science and Engineering at IISER Bhopal,
           under the supervision of <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
-          and co-supervised by <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a> (External Supervisor).
+          and co-supervised by <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a>.
           My research develops <em>unsupervised and weakly-supervised learning methods for brain MRI segmentation</em>,
           aiming to enable automated clinical analysis without expensive manual annotations.
         </p>
@@ -495,7 +490,6 @@
 
       <section>
         <p class="sec-label sl-green">Education</p>
-
         <div class="edu-item">
           <p class="edu-yr">2023 – present</p>
           <p class="edu-deg">Doctor of Philosophy</p>
@@ -519,7 +513,6 @@
 
       <section>
         <p class="sec-label sl-rose">Honours &amp; Awards</p>
-
         <div class="side-item">
           <p class="side-yr">2026</p>
           <p class="side-title">Doctoral Consortium</p>
@@ -553,7 +546,7 @@
 
     </div><!-- /sidebar -->
 
-  </div><!-- /body-grid -->
+  </div>
 
   <footer>
     Rasel Mondal · IISER Bhopal · Last updated March 2026
