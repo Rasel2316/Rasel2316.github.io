@@ -12,14 +12,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #faf9f7;
-      --text:    #1c1b18;
-      --muted:   #6b6860;
-      --light:   #9a9890;
-      --rule:    #dddbd6;
-      --accent:  #3a3a8c;
-      --serif:   'EB Garamond', Georgia, serif;
-      --body:    'Crimson Pro', Georgia, serif;
+      --bg:       #f7f6f2;
+      --bg-card:  #ffffff;
+      --text:     #1a1916;
+      --muted:    #5c5a55;
+      --light:    #9a9890;
+      --rule:     #e0ddd7;
+      --blue:     #2a52a0;
+      --green:    #1a6e4a;
+      --rose:     #8b2252;
+      --gold:     #b07d22;
+      --serif:    'EB Garamond', Georgia, serif;
+      --body:     'Crimson Pro', Georgia, serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -27,203 +31,241 @@
     body {
       font-family: var(--body);
       font-size: 17.5px;
-      line-height: 1.75;
+      line-height: 1.78;
       color: var(--text);
       background: var(--bg);
     }
 
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
     .page {
-      max-width: 720px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 80px 32px 100px;
+      padding: 0 44px 80px;
     }
 
-    /* ── HEADER ─────────────────────────────────────── */
+    /* ══ HEADER ════════════════════════════════════════ */
     header {
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 260px;
       margin-bottom: 52px;
+      border-bottom: 3px solid var(--blue);
     }
+
+    .hd-main { padding: 52px 40px 36px 0; }
+
     .hd-name {
       font-family: var(--serif);
-      font-size: 2.2rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      margin-bottom: 8px;
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 10px;
     }
     .hd-role {
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.02rem;
       font-style: italic;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       line-height: 1.55;
     }
     .hd-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px 16px;
-      font-size: 0.92rem;
-      margin-bottom: 16px;
+      gap: 4px 20px;
+      font-size: 0.93rem;
+      margin-bottom: 20px;
     }
-    .hd-links a { color: var(--muted); }
-    .hd-links a:hover { color: var(--accent); }
-    .hd-sep { color: var(--rule); }
+    .hd-links a   { color: var(--muted); }
+    .hd-links a:hover { color: var(--blue); }
+    .hd-sep       { color: var(--rule); }
     .hd-badge {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       letter-spacing: 0.06em;
-      color: var(--accent);
-      background: rgba(58,58,140,0.07);
-      border: 1px solid rgba(58,58,140,0.18);
       border-radius: 3px;
-      padding: 3px 10px;
+      padding: 4px 12px;
+      color: var(--blue);
+      background: rgba(42,82,160,0.08);
+      border: 1px solid rgba(42,82,160,0.22);
     }
 
-    /* ── SECTIONS ───────────────────────────────────── */
-    section { margin-bottom: 52px; }
+    /* blue right panel */
+    .hd-panel {
+      background: var(--blue);
+      padding: 52px 28px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hd-panel-lbl {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.52);
+      margin-bottom: 2px;
+      font-family: var(--body);
+    }
+    .hd-panel-val {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.92);
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .hd-panel-val a { color: #fff; }
+    .hd-panel-val a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .hd-panel-hr { height: 1px; background: rgba(255,255,255,0.15); }
+
+    /* ══ BODY GRID ══════════════════════════════════════ */
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 268px;
+      gap: 0 56px;
+      align-items: start;
+    }
+
+    /* ══ SECTIONS ══════════════════════════════════════ */
+    section { margin-bottom: 46px; }
 
     .sec-label {
-      font-size: 0.74rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--light);
       font-family: var(--body);
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--rule);
-      margin-bottom: 22px;
+      padding-bottom: 9px;
+      border-bottom: 2px solid;
+      margin-bottom: 20px;
     }
+    .sl-blue  { color: var(--blue);  border-color: var(--blue); }
+    .sl-green { color: var(--green); border-color: var(--green); }
+    .sl-rose  { color: var(--rose);  border-color: var(--rose); }
+    .sl-gold  { color: var(--gold);  border-color: var(--gold); }
 
-    /* ── BIO ────────────────────────────────────────── */
+    /* ── Bio ─── */
     .bio p { margin-bottom: 10px; font-size: 1rem; }
     .bio p:last-child { margin-bottom: 0; }
 
-    /* ── INTERESTS ──────────────────────────────────── */
-    .int-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    /* ── Interests ─── */
+    .int-list { display: flex; flex-wrap: wrap; gap: 7px; }
     .int-tag {
-      font-size: 0.88rem;
+      font-size: 0.83rem;
       color: var(--muted);
-      background: white;
+      background: var(--bg-card);
       border: 1px solid var(--rule);
       border-radius: 3px;
-      padding: 3px 11px;
+      padding: 3px 10px;
       font-style: italic;
     }
 
-    /* ── PUB LIST ───────────────────────────────────── */
+    /* ── Publications ─── */
     .pub {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 0 22px;
-      padding: 18px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--rule);
     }
     .pub:first-of-type { border-top: 1px solid var(--rule); }
+
+    .pub-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+      flex-wrap: wrap;
+    }
     .pub-yr {
-      font-size: 0.8rem;
+      font-size: 0.77rem;
       color: var(--light);
       font-style: italic;
-      padding-top: 3px;
     }
     .pub-title {
       font-family: var(--serif);
-      font-size: 1rem;
+      font-size: 1.01rem;
       font-weight: 500;
       line-height: 1.45;
       margin-bottom: 4px;
       color: var(--text);
     }
     .pub-title a { color: inherit; }
-    .pub-title a:hover { color: var(--accent); }
+    .pub-title a:hover { color: var(--blue); }
     .pub-authors {
-      font-size: 0.875rem;
+      font-size: 0.86rem;
       color: var(--muted);
       font-style: italic;
       margin-bottom: 3px;
     }
     .pub-authors b { font-style: normal; font-weight: 500; color: var(--text); }
-    .pub-venue { font-size: 0.875rem; color: var(--muted); }
+    .pub-venue { font-size: 0.86rem; color: var(--muted); }
     .pub-venue em { font-style: italic; }
-    .pub-links {
-      margin-top: 6px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    .pub-links { margin-top: 6px; display: flex; gap: 14px; }
     .pub-links a {
-      font-size: 0.78rem;
-      color: var(--accent);
+      font-size: 0.76rem;
+      color: var(--blue);
       letter-spacing: 0.03em;
-      font-family: var(--body);
     }
-    .pub-links a::before {
-      content: '↗ ';
-      font-size: 0.72rem;
-    }
+    .pub-links a::before { content: '↗ '; font-size: 0.7rem; }
+
+    /* badges */
     .badge {
       display: inline-block;
-      font-size: 0.68rem;
+      font-size: 0.64rem;
       letter-spacing: 0.07em;
       text-transform: uppercase;
       border-radius: 2px;
-      padding: 1px 7px;
-      margin-left: 7px;
-      vertical-align: middle;
+      padding: 2px 8px;
       font-family: var(--body);
       font-style: normal;
       font-weight: 400;
+      white-space: nowrap;
     }
-    .b-conf   { color: var(--accent); background: rgba(58,58,140,0.06); border: 1px solid rgba(58,58,140,0.18); }
-    .b-review { color: var(--muted);  background: transparent;          border: 1px solid var(--rule); }
-    .b-wip    { color: #7a5818;       background: rgba(122,88,24,0.06);  border: 1px solid rgba(122,88,24,0.22); }
+    .b-blue   { color: var(--blue);  background: rgba(42,82,160,0.07);  border: 1px solid rgba(42,82,160,0.22); }
+    .b-green  { color: var(--green); background: rgba(26,110,74,0.07);  border: 1px solid rgba(26,110,74,0.22); }
+    .b-review { color: var(--muted); background: transparent;           border: 1px solid var(--rule); }
+    .b-gold   { color: var(--gold);  background: rgba(176,125,34,0.08); border: 1px solid rgba(176,125,34,0.25); }
+    .b-rose   { color: var(--rose);  background: rgba(139,34,82,0.07);  border: 1px solid rgba(139,34,82,0.22); }
 
-    /* ── EDUCATION ──────────────────────────────────── */
-    .edu {
-      display: grid;
-      grid-template-columns: 116px 1fr;
-      gap: 0 22px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .edu:first-of-type { border-top: 1px solid var(--rule); }
-    .edu-yr { font-size: 0.8rem; color: var(--light); font-style: italic; padding-top: 2px; }
-    .edu-deg { font-family: var(--serif); font-size: 1rem; font-weight: 500; margin-bottom: 2px; }
-    .edu-inst { font-size: 0.88rem; color: var(--muted); }
-    .edu-note { font-size: 0.8rem; color: var(--light); font-style: italic; margin-top: 2px; }
-
-    /* ── HONOURS ────────────────────────────────────── */
-    .hon {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 0 22px;
+    /* ── Sidebar items ─── */
+    .side-item {
       padding: 10px 0;
       border-bottom: 1px solid var(--rule);
-      font-size: 0.93rem;
+      font-size: 0.92rem;
     }
-    .hon:first-of-type { border-top: 1px solid var(--rule); }
-    .hon-yr { color: var(--light); font-style: italic; font-size: 0.8rem; padding-top: 2px; }
-    .hon-text { color: var(--muted); }
-    .hon-text b { color: var(--text); font-weight: 500; }
+    .side-item:first-of-type { border-top: 1px solid var(--rule); }
+    .side-yr    { font-size: 0.74rem; color: var(--light); font-style: italic; margin-bottom: 1px; }
+    .side-title { color: var(--text); font-weight: 500; font-size: 0.9rem; }
+    .side-sub   { color: var(--muted); font-size: 0.81rem; font-style: italic; }
 
-    /* ── FOOTER ─────────────────────────────────────── */
+    /* ── Education (sidebar) ─── */
+    .edu-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .edu-item:first-of-type { border-top: 1px solid var(--rule); }
+    .edu-yr   { font-size: 0.74rem; color: var(--light); font-style: italic; margin-bottom: 3px; }
+    .edu-deg  { font-family: var(--serif); font-size: 0.97rem; font-weight: 500; margin-bottom: 2px; line-height: 1.3; }
+    .edu-inst { font-size: 0.82rem; color: var(--muted); }
+    .edu-note { font-size: 0.75rem; color: var(--light); font-style: italic; margin-top: 4px; line-height: 1.5; }
+    .edu-note a { color: var(--blue); }
+
+    /* ── Footer ─── */
     footer {
       border-top: 1px solid var(--rule);
       padding-top: 18px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--light);
       font-style: italic;
     }
 
-    /* ── RESPONSIVE ─────────────────────────────────── */
-    @media (max-width: 580px) {
-      .page { padding: 44px 20px 72px; }
-      .hd-name { font-size: 1.8rem; }
-      .pub, .edu, .hon { grid-template-columns: 1fr; gap: 2px; }
-      .pub-yr, .edu-yr, .hon-yr { font-size: 0.75rem; }
+    /* ══ RESPONSIVE ═══════════════════════════════════ */
+    @media (max-width: 860px) {
+      .body-grid { grid-template-columns: 1fr; }
+      header { grid-template-columns: 1fr; }
+      .hd-panel { padding: 24px 28px; flex-direction: row; flex-wrap: wrap; gap: 14px 32px; }
+    }
+    @media (max-width: 600px) {
+      .page { padding: 0 20px 60px; }
+      .hd-main { padding: 36px 0 24px; }
+      .hd-name { font-size: 2.1rem; }
     }
   </style>
 </head>
@@ -232,190 +274,229 @@
 
   <!-- HEADER -->
   <header>
-    <h1 class="hd-name">Rasel Mondal</h1>
-    <p class="hd-role">
-      PhD Scholar · Data Science &amp; Engineering<br />
-      Indian Institute of Science Education and Research Bhopal
-    </p>
-    <div class="hd-links">
-      <a href="mailto:rasel23@iiserb.ac.in">rasel23@iiserb.ac.in</a>
-      <span class="hd-sep">·</span>
-      <a href="https://github.com/Rasel2316" target="_blank" rel="noopener">GitHub</a>
-      <span class="hd-sep">·</span>
-      <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="hd-main">
+      <h1 class="hd-name">Rasel Mondal</h1>
+      <p class="hd-role">
+        PhD Scholar · Data Science &amp; Engineering<br />
+        Indian Institute of Science Education and Research Bhopal
+      </p>
+      <div class="hd-links">
+        <a href="mailto:rasel23@iiserb.ac.in">rasel23@iiserb.ac.in</a>
+        <span class="hd-sep">·</span>
+        <a href="https://github.com/Rasel2316" target="_blank" rel="noopener">GitHub</a>
+        <span class="hd-sep">·</span>
+        <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <span class="hd-badge">IEEE ICHI 2026 · Doctoral Consortium</span>
     </div>
-    <span class="hd-badge">IEEE ICHI 2026 · Doctoral Consortium</span>
+
+    <div class="hd-panel">
+      <div>
+        <p class="hd-panel-lbl">Supervisor</p>
+        <p class="hd-panel-val">
+          <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
+        </p>
+      </div>
+      <div class="hd-panel-hr"></div>
+      <div>
+        <p class="hd-panel-lbl">External Supervisor</p>
+        <p class="hd-panel-val">
+          <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a>
+        </p>
+      </div>
+      <div class="hd-panel-hr"></div>
+      <div>
+        <p class="hd-panel-lbl">Institution</p>
+        <p class="hd-panel-val">IISER Bhopal, India</p>
+      </div>
+    </div>
   </header>
 
-  <!-- ABOUT -->
-  <section class="bio">
-    <p class="sec-label">About</p>
-    <p>
-      I am a PhD scholar in the Department of Data Science and Engineering at IISER Bhopal,
-      under the supervision of <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
-      and co-supervised by <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a> (External Supervisor).
-      My research develops <em>unsupervised and weakly-supervised learning methods for brain MRI segmentation</em>,
-      aiming to enable automated clinical analysis without expensive manual annotations.
-    </p>
-    <p>
-      My broader interests span probabilistic modelling, topological data analysis, and
-      uncertainty quantification in deep learning, applied to medical imaging.
-      I serve as a reviewer for the <em>ML4H Symposium 2025</em>.
-    </p>
-  </section>
+  <!-- BODY GRID -->
+  <div class="body-grid">
 
-  <!-- RESEARCH INTERESTS -->
-  <section>
-    <p class="sec-label">Research Interests</p>
-    <div class="int-list">
-      <span class="int-tag">Unsupervised Learning</span>
-      <span class="int-tag">Brain MRI Segmentation</span>
-      <span class="int-tag">Bayesian Deep Learning</span>
-      <span class="int-tag">Fuzzy Clustering</span>
-      <span class="int-tag">Topological Data Analysis</span>
-      <span class="int-tag">Uncertainty Quantification</span>
-      <span class="int-tag">Normalizing Flows</span>
-      <span class="int-tag">Medical Image Analysis</span>
-    </div>
-  </section>
+    <!-- ── MAIN COLUMN ────────────────────────────── -->
+    <div>
 
-  <!-- PUBLICATIONS -->
-  <section>
-    <p class="sec-label">Publications</p>
+      <section class="bio">
+        <p class="sec-label sl-blue">About</p>
+        <p>
+          I am a PhD scholar in the Department of Data Science and Engineering at IISER Bhopal,
+          under the supervision of <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
+          and co-supervised by <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a> (External Supervisor).
+          My research develops <em>unsupervised and weakly-supervised learning methods for brain MRI segmentation</em>,
+          aiming to enable automated clinical analysis without expensive manual annotations.
+        </p>
+        <p>
+          My broader interests span probabilistic modelling, topological data analysis, and
+          uncertainty quantification in deep learning, applied to medical imaging.
+          I serve as a reviewer for the <em>ML4H Symposium 2025</em>.
+        </p>
+      </section>
 
-    <div class="pub">
-      <div class="pub-yr">2026</div>
-      <div>
-        <p class="pub-title">Regularized Fuzzy C-Means with Markov Random Fields for Brain Stroke Lesion Segmentation in MRI <span class="badge b-conf">Doctoral Consortium</span></p>
-        <p class="pub-authors"><b>Rasel Mondal</b></p>
-        <p class="pub-venue"><em>IEEE International Conference on Healthcare Informatics (ICHI 2026)</em></p>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-yr">2026</div>
-      <div>
-        <p class="pub-title">HISTO-UNet: Histopathology Image Segmentation Using Topology-Aware UNet with Dual Uncertainty Quantification</p>
-        <p class="pub-authors">A. Dhor, E. Das, <b>R. Mondal</b>, S. Azad, V. Walke, S. K. Yadav, A. Banerjee, T. Basu</p>
-        <p class="pub-venue"><em>IEEE International Symposium on Biomedical Imaging (ISBI 2026)</em></p>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-yr">2025</div>
-      <div>
-        <p class="pub-title">Attention-Gated CNN and Discrete Wavelet Transform based Ensemble Framework for Brain Hemorrhage Classification</p>
-        <p class="pub-authors">S. Bhaduri, <b>R. Mondal</b>, P. Sarangi, V. K. Kurmi, S. Goyal, L. Kaushal, M. Sodani, T. Basu</p>
-        <p class="pub-venue"><em>Neuroscience Informatics</em> (CiteScore 11.7)</p>
-        <div class="pub-links">
-          <a href="https://doi.org/10.1016/j.neuri.2025.100243" target="_blank" rel="noopener">DOI</a>
+      <section>
+        <p class="sec-label sl-blue">Research Interests</p>
+        <div class="int-list">
+          <span class="int-tag">Unsupervised Learning</span>
+          <span class="int-tag">Brain MRI Segmentation</span>
+          <span class="int-tag">Bayesian Deep Learning</span>
+          <span class="int-tag">Fuzzy Clustering</span>
+          <span class="int-tag">Topological Data Analysis</span>
+          <span class="int-tag">Uncertainty Quantification</span>
+          <span class="int-tag">Normalizing Flows</span>
+          <span class="int-tag">Medical Image Analysis</span>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <div class="pub">
-      <div class="pub-yr">2025</div>
-      <div>
-        <p class="pub-title">A Novel Regularized Fuzzy C-Means Clustering Technique for Brain MRI Segmentation <span class="badge b-review">Under Review</span></p>
-        <p class="pub-authors"><b>Rasel Mondal</b>, T. Basu</p>
-        <p class="pub-venue"><em>Biomedical Signal Processing and Control</em></p>
-      </div>
-    </div>
+      <section>
+        <p class="sec-label sl-blue">Publications</p>
 
-    <div class="pub">
-      <div class="pub-yr">2023</div>
-      <div>
-        <p class="pub-title">Advanced TOPSIS-Based College Selection MCGDM Problem in Trapezoidal Pythagorean Fuzzy Environment</p>
-        <p class="pub-venue">Book Chapter · Fuzzy Optimization, Decision Making and Operation Research</p>
-        <div class="pub-links">
-          <a href="https://www.researchgate.net/profile/Avishek-Chakraborty/publication/374961242_Advanced_TOPSIS-Based_College_Selection_MCGDM_Problem_in_Trapezoidal_Pythagorean_Fuzzy_Environment/links/65a22b91af617b0d8741abeb/Advanced-TOPSIS-Based-College-Selection-MCGDM-Problem-in-Trapezoidal-Pythagorean-Fuzzy-Environment.pdf" target="_blank" rel="noopener">PDF</a>
+        <div class="pub">
+          <div class="pub-meta">
+            <span class="pub-yr">2026</span>
+            <span class="badge b-blue">Doctoral Consortium · ICHI 2026</span>
+          </div>
+          <p class="pub-title">Regularized Fuzzy C-Means with Markov Random Fields for Brain Stroke Lesion Segmentation in MRI</p>
+          <p class="pub-authors"><b>Rasel Mondal</b></p>
+          <p class="pub-venue"><em>IEEE International Conference on Healthcare Informatics (ICHI 2026)</em></p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- WORK IN PROGRESS -->
-  <section>
-    <p class="sec-label">Work in Progress</p>
+        <div class="pub">
+          <div class="pub-meta">
+            <span class="pub-yr">2026</span>
+            <span class="badge b-blue">ISBI 2026</span>
+          </div>
+          <p class="pub-title">HISTO-UNet: Histopathology Image Segmentation Using Topology-Aware UNet with Dual Uncertainty Quantification</p>
+          <p class="pub-authors">A. Dhor, E. Das, <b>R. Mondal</b>, S. Azad, V. Walke, S. K. Yadav, A. Banerjee, T. Basu</p>
+          <p class="pub-venue"><em>IEEE International Symposium on Biomedical Imaging (ISBI 2026)</em></p>
+        </div>
 
-    <div class="pub">
-      <div class="pub-yr">2026</div>
-      <div>
-        <p class="pub-title">BayesFlow3D: Topology-Aware Bayesian Flows for Unsupervised 3D Brain Anomaly Segmentation <span class="badge b-wip">In Progress</span></p>
-        <p class="pub-authors"><b>Rasel Mondal</b> et al.</p>
-        <p class="pub-venue">Unsupervised probabilistic framework using normalizing flows, topology-aware learning, and iterative Bayesian refinement for 3D anomaly detection.</p>
-      </div>
-    </div>
+        <div class="pub">
+          <div class="pub-meta">
+            <span class="pub-yr">2025</span>
+            <span class="badge b-green">Journal · CiteScore 11.7</span>
+          </div>
+          <p class="pub-title">Attention-Gated CNN and Discrete Wavelet Transform based Ensemble Framework for Brain Hemorrhage Classification</p>
+          <p class="pub-authors">S. Bhaduri, <b>R. Mondal</b>, P. Sarangi, V. K. Kurmi, S. Goyal, L. Kaushal, M. Sodani, T. Basu</p>
+          <p class="pub-venue"><em>Neuroscience Informatics</em></p>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.neuri.2025.100243" target="_blank" rel="noopener">DOI</a>
+          </div>
+        </div>
 
-    <div class="pub">
-      <div class="pub-yr">2026</div>
-      <div>
-        <p class="pub-title">Uncertainty-Guided Adaptive Refinement for Brain Lesion Segmentation <span class="badge b-wip">In Progress</span></p>
-        <p class="pub-authors"><b>Rasel Mondal</b> et al.</p>
-        <p class="pub-venue">Stroke lesion segmentation driven by predictive uncertainty — patch-based adaptive refinement with topology-constrained boundary optimization.</p>
-      </div>
-    </div>
-  </section>
+        <div class="pub">
+          <div class="pub-meta">
+            <span class="pub-yr">2025</span>
+            <span class="badge b-review">Under Review</span>
+          </div>
+          <p class="pub-title">A Novel Regularized Fuzzy C-Means Clustering Technique for Brain MRI Segmentation</p>
+          <p class="pub-authors"><b>Rasel Mondal</b>, T. Basu</p>
+          <p class="pub-venue"><em>Biomedical Signal Processing and Control</em></p>
+        </div>
 
-  <!-- EDUCATION -->
-  <section>
-    <p class="sec-label">Education</p>
+        <div class="pub">
+          <div class="pub-meta">
+            <span class="pub-yr">2023</span>
+            <span class="badge b-rose">Book Chapter</span>
+          </div>
+          <p class="pub-title">Advanced TOPSIS-Based College Selection MCGDM Problem in Trapezoidal Pythagorean Fuzzy Environment</p>
+          <p class="pub-venue">Fuzzy Optimization, Decision Making and Operation Research</p>
+          <div class="pub-links">
+            <a href="https://www.researchgate.net/profile/Avishek-Chakraborty/publication/374961242_Advanced_TOPSIS-Based_College_Selection_MCGDM_Problem_in_Trapezoidal_Pythagorean_Fuzzy_Environment/links/65a22b91af617b0d8741abeb/Advanced-TOPSIS-Based-College-Selection-MCGDM-Problem-in-Trapezoidal-Pythagorean-Fuzzy-Environment.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </section>
 
-    <div class="edu">
-      <div class="edu-yr">2023 – present</div>
-      <div>
-        <p class="edu-deg">Doctor of Philosophy</p>
-        <p class="edu-inst">IISER Bhopal · Dept. of Data Science and Engineering</p>
-        <p class="edu-note">Supervisor: <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a> &nbsp;·&nbsp; External Supervisor: <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a></p>
-      </div>
-    </div>
+      <section>
+        <p class="sec-label sl-gold">Work in Progress</p>
 
-    <div class="edu">
-      <div class="edu-yr">2019 – 2021</div>
-      <div>
-        <p class="edu-deg">Master of Science in Applied Mathematics</p>
-        <p class="edu-inst">IIEST Shibpur, Howrah</p>
-      </div>
-    </div>
+        <div class="pub">
+          <div class="pub-meta">
+            <span class="pub-yr">2026</span>
+            <span class="badge b-gold">In Progress</span>
+          </div>
+          <p class="pub-title">BayesFlow3D: Topology-Aware Bayesian Flows for Unsupervised 3D Brain Anomaly Segmentation</p>
+          <p class="pub-authors"><b>Rasel Mondal</b> et al.</p>
+          <p class="pub-venue">Unsupervised probabilistic framework using normalizing flows, topology-aware learning, and iterative Bayesian refinement for 3D anomaly detection.</p>
+        </div>
 
-    <div class="edu">
-      <div class="edu-yr">2016 – 2019</div>
-      <div>
-        <p class="edu-deg">Bachelor of Science in Mathematics</p>
-        <p class="edu-inst">Ramakrishna Mission Residential College, Narendrapur, Kolkata</p>
-      </div>
-    </div>
-  </section>
+        <div class="pub">
+          <div class="pub-meta">
+            <span class="pub-yr">2026</span>
+            <span class="badge b-gold">In Progress</span>
+          </div>
+          <p class="pub-title">Uncertainty-Guided Adaptive Refinement for Brain Lesion Segmentation</p>
+          <p class="pub-authors"><b>Rasel Mondal</b> et al.</p>
+          <p class="pub-venue">Stroke lesion segmentation driven by predictive uncertainty — patch-based adaptive refinement with topology-constrained boundary optimization.</p>
+        </div>
+      </section>
 
-  <!-- HONOURS -->
-  <section>
-    <p class="sec-label">Honours &amp; Awards</p>
+    </div><!-- /main col -->
 
-    <div class="hon">
-      <div class="hon-yr">2026</div>
-      <div class="hon-text"><b>Doctoral Consortium Selection</b> — IEEE ICHI 2026</div>
-    </div>
-    <div class="hon">
-      <div class="hon-yr">2025</div>
-      <div class="hon-text"><b>Reviewer</b> — ML4H Symposium 2025</div>
-    </div>
-    <div class="hon">
-      <div class="hon-yr">2016–2021</div>
-      <div class="hon-text"><b>Inspire Fellow</b> — Dept. of Science &amp; Technology, Govt. of India</div>
-    </div>
-    <div class="hon">
-      <div class="hon-yr">2022</div>
-      <div class="hon-text"><b>GATE Qualified</b> — AIR 659</div>
-    </div>
-    <div class="hon">
-      <div class="hon-yr">2019</div>
-      <div class="hon-text"><b>JAM Qualified</b> — AIR 993</div>
-    </div>
-    <div class="hon">
-      <div class="hon-yr">2022</div>
-      <div class="hon-text"><b>SET &amp; TET Qualified</b></div>
-    </div>
-  </section>
+    <!-- ── SIDEBAR ────────────────────────────────── -->
+    <div>
+
+      <section>
+        <p class="sec-label sl-green">Education</p>
+
+        <div class="edu-item">
+          <p class="edu-yr">2023 – present</p>
+          <p class="edu-deg">Doctor of Philosophy</p>
+          <p class="edu-inst">IISER Bhopal · Data Science &amp; Engineering</p>
+          <p class="edu-note">
+            <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a> ·
+            <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a>
+          </p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-yr">2019 – 2021</p>
+          <p class="edu-deg">M.Sc. Applied Mathematics</p>
+          <p class="edu-inst">IIEST Shibpur, Howrah</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-yr">2016 – 2019</p>
+          <p class="edu-deg">B.Sc. Mathematics</p>
+          <p class="edu-inst">Ramakrishna Mission Residential College, Narendrapur</p>
+        </div>
+      </section>
+
+      <section>
+        <p class="sec-label sl-rose">Honours &amp; Awards</p>
+
+        <div class="side-item">
+          <p class="side-yr">2026</p>
+          <p class="side-title">Doctoral Consortium</p>
+          <p class="side-sub">IEEE ICHI 2026</p>
+        </div>
+        <div class="side-item">
+          <p class="side-yr">2025</p>
+          <p class="side-title">Reviewer</p>
+          <p class="side-sub">ML4H Symposium 2025</p>
+        </div>
+        <div class="side-item">
+          <p class="side-yr">2016 – 2021</p>
+          <p class="side-title">Inspire Fellow</p>
+          <p class="side-sub">DST, Govt. of India</p>
+        </div>
+        <div class="side-item">
+          <p class="side-yr">2022</p>
+          <p class="side-title">GATE Qualified</p>
+          <p class="side-sub">AIR 659</p>
+        </div>
+        <div class="side-item">
+          <p class="side-yr">2019</p>
+          <p class="side-title">JAM Qualified</p>
+          <p class="side-sub">AIR 993</p>
+        </div>
+        <div class="side-item">
+          <p class="side-yr">2022</p>
+          <p class="side-title">SET &amp; TET Qualified</p>
+        </div>
+      </section>
+
+    </div><!-- /sidebar -->
+
+  </div><!-- /body-grid -->
 
   <footer>
     Rasel Mondal · IISER Bhopal · Last updated March 2026
