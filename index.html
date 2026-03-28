@@ -3,416 +3,403 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rasel Mondal — PhD Scholar | IISER Bhopal</title>
-  <meta name="description" content="Academic portfolio of Rasel Mondal, PhD Scholar at IISER Bhopal. Research in unsupervised learning, brain MRI segmentation, and medical image analysis." />
+  <title>Rasel Mondal</title>
+  <meta name="description" content="Rasel Mondal — PhD Scholar, Data Science & Engineering, IISER Bhopal." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #faf9f7;
+      --text:    #1c1b18;
+      --muted:   #6b6860;
+      --light:   #9a9890;
+      --rule:    #dddbd6;
+      --accent:  #3a3a8c;
+      --serif:   'EB Garamond', Georgia, serif;
+      --body:    'Crimson Pro', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      font-size: 17.5px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 32px 100px;
+    }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    header {
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 52px;
+    }
+    .hd-name {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hd-role {
+      color: var(--muted);
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 18px;
+      line-height: 1.55;
+    }
+    .hd-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+    .hd-links a { color: var(--muted); }
+    .hd-links a:hover { color: var(--accent); }
+    .hd-sep { color: var(--rule); }
+    .hd-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      background: rgba(58,58,140,0.07);
+      border: 1px solid rgba(58,58,140,0.18);
+      border-radius: 3px;
+      padding: 3px 10px;
+    }
+
+    /* ── SECTIONS ───────────────────────────────────── */
+    section { margin-bottom: 52px; }
+
+    .sec-label {
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light);
+      font-family: var(--body);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 22px;
+    }
+
+    /* ── BIO ────────────────────────────────────────── */
+    .bio p { margin-bottom: 10px; font-size: 1rem; }
+    .bio p:last-child { margin-bottom: 0; }
+
+    /* ── INTERESTS ──────────────────────────────────── */
+    .int-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .int-tag {
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 3px 11px;
+      font-style: italic;
+    }
+
+    /* ── PUB LIST ───────────────────────────────────── */
+    .pub {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 22px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub:first-of-type { border-top: 1px solid var(--rule); }
+    .pub-yr {
+      font-size: 0.8rem;
+      color: var(--light);
+      font-style: italic;
+      padding-top: 3px;
+    }
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.45;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .pub-title a { color: inherit; }
+    .pub-title a:hover { color: var(--accent); }
+    .pub-authors {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+    .pub-authors b { font-style: normal; font-weight: 500; color: var(--text); }
+    .pub-venue { font-size: 0.875rem; color: var(--muted); }
+    .pub-venue em { font-style: italic; }
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      padding: 1px 7px;
+      margin-left: 7px;
+      vertical-align: middle;
+      font-family: var(--body);
+      font-style: normal;
+      font-weight: 400;
+    }
+    .b-conf   { color: var(--accent); background: rgba(58,58,140,0.06); border: 1px solid rgba(58,58,140,0.18); }
+    .b-review { color: var(--muted);  background: transparent;          border: 1px solid var(--rule); }
+    .b-wip    { color: #7a5818;       background: rgba(122,88,24,0.06);  border: 1px solid rgba(122,88,24,0.22); }
+
+    /* ── EDUCATION ──────────────────────────────────── */
+    .edu {
+      display: grid;
+      grid-template-columns: 116px 1fr;
+      gap: 0 22px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .edu:first-of-type { border-top: 1px solid var(--rule); }
+    .edu-yr { font-size: 0.8rem; color: var(--light); font-style: italic; padding-top: 2px; }
+    .edu-deg { font-family: var(--serif); font-size: 1rem; font-weight: 500; margin-bottom: 2px; }
+    .edu-inst { font-size: 0.88rem; color: var(--muted); }
+    .edu-note { font-size: 0.8rem; color: var(--light); font-style: italic; margin-top: 2px; }
+
+    /* ── HONOURS ────────────────────────────────────── */
+    .hon {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 22px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.93rem;
+    }
+    .hon:first-of-type { border-top: 1px solid var(--rule); }
+    .hon-yr { color: var(--light); font-style: italic; font-size: 0.8rem; padding-top: 2px; }
+    .hon-text { color: var(--muted); }
+    .hon-text b { color: var(--text); font-weight: 500; }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+      font-size: 0.82rem;
+      color: var(--light);
+      font-style: italic;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 580px) {
+      .page { padding: 44px 20px 72px; }
+      .hd-name { font-size: 1.8rem; }
+      .pub, .edu, .hon { grid-template-columns: 1fr; gap: 2px; }
+      .pub-yr, .edu-yr, .hon-yr { font-size: 0.75rem; }
+    }
+  </style>
 </head>
 <body>
+<div class="page">
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-logo">RM<span class="dot">.</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-  </nav>
-
-  <!-- HERO -->
-  <section id="hero">
-    <canvas id="heroCanvas"></canvas>
-    <div class="hero-content">
-      <div class="hero-badge"><span class="mono">PhD Scholar · IISER Bhopal</span></div>
-      <h1 class="hero-name">Rasel<br /><em>Mondal</em></h1>
-      <p class="hero-tagline">
-        Unsupervised learning for medical image analysis —<br />
-        decoding the brain, one MRI at a time.
-      </p>
-      <div class="hero-links">
-        <a href="mailto:rasel23@iiserb.ac.in" class="btn-outline">Email</a>
-        <a href="https://github.com/" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
-        <a href="https://linkedin.com/" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
-        <a href="#publications" class="btn-primary">Publications →</a>
-      </div>
+  <!-- HEADER -->
+  <header>
+    <h1 class="hd-name">Rasel Mondal</h1>
+    <p class="hd-role">
+      PhD Scholar · Data Science &amp; Engineering<br />
+      Indian Institute of Science Education and Research Bhopal
+    </p>
+    <div class="hd-links">
+      <a href="mailto:rasel23@iiserb.ac.in">rasel23@iiserb.ac.in</a>
+      <span class="hd-sep">·</span>
+      <a href="https://github.com/Rasel2316" target="_blank" rel="noopener">GitHub</a>
+      <span class="hd-sep">·</span>
+      <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="hd-sep">·</span>
+      <a href="https://sites.google.com/iiserb.ac.in/rasel-mondal/about" target="_blank" rel="noopener">Institute Page</a>
     </div>
-    <div class="hero-scroll-hint">
-      <span class="mono">scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+    <span class="hd-badge">IEEE ICHI 2026 · Doctoral Consortium</span>
+  </header>
 
   <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="section-label mono">01 · About</div>
-      <div class="about-grid">
-        <div class="about-text">
-          <h2 class="section-title">Decoding the <em>Brain</em><br />Through Data</h2>
-          <p>
-            I'm a PhD scholar in Data Science & Engineering at the Indian Institute of Science Education and Research Bhopal, working under the supervision of <strong>Dr. Tanmay Basu</strong>. My research lies at the intersection of machine learning and medical image analysis.
-          </p>
-          <p>
-            My core focus is building <strong>unsupervised and semi-supervised methods</strong> for brain MRI segmentation — developing models that can identify lesions, anomalies, and structures without relying on expensive manual annotations, making intelligent diagnostics more accessible in clinical settings.
-          </p>
-          <p>
-            I am also a reviewer for the <strong>ML4H Symposium 2025</strong> and have been selected for the Doctoral Consortium at <strong>IEEE ICHI 2026</strong>.
-          </p>
-        </div>
-        <div class="about-stats">
-          <div class="stat-card">
-            <span class="stat-number">4+</span>
-            <span class="stat-label">Publications &<br />Preprints</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">3+</span>
-            <span class="stat-label">Years of PhD<br />Research</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">2</span>
-            <span class="stat-label">Works<br />in Progress</span>
-          </div>
-          <div class="stat-card highlight-card">
-            <span class="stat-number">IEEE</span>
-            <span class="stat-label">ICHI 2026<br />Doctoral Consortium</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="bio">
+    <p class="sec-label">About</p>
+    <p>
+      I am a PhD scholar in the Department of Data Science and Engineering at IISER Bhopal,
+      under the supervision of <a href="#">Dr. Tanmay Basu</a>. My research develops
+      <em>unsupervised and weakly-supervised learning methods for brain MRI segmentation</em>,
+      aiming to enable automated clinical analysis without expensive manual annotations.
+    </p>
+    <p>
+      My broader interests span probabilistic modelling, topological data analysis, and
+      uncertainty quantification in deep learning, applied to medical imaging.
+      I serve as a reviewer for the <em>ML4H Symposium 2025</em>.
+    </p>
   </section>
 
-  <!-- RESEARCH -->
-  <section id="research">
-    <div class="container">
-      <div class="section-label mono">02 · Research</div>
-      <h2 class="section-title">Research <em>Themes</em></h2>
-      <div class="research-grid">
-        <div class="research-card" data-index="01">
-          <div class="rc-icon">⬡</div>
-          <h3>Unsupervised Brain MRI Segmentation</h3>
-          <p>Developing clustering and probabilistic methods for segmenting brain lesions and tissues in MRI scans without manual labels — using Fuzzy C-Means, MRF, and normalizing flows.</p>
-          <div class="rc-tags">
-            <span class="tag">Clustering</span><span class="tag">MRF</span><span class="tag">Fuzzy Logic</span>
-          </div>
-        </div>
-        <div class="research-card" data-index="02">
-          <div class="rc-icon">◈</div>
-          <h3>Uncertainty-Aware Deep Learning</h3>
-          <p>Integrating Bayesian inference, Monte Carlo dropout, and heteroscedastic uncertainty into segmentation pipelines for interpretable, clinically trustworthy predictions.</p>
-          <div class="rc-tags">
-            <span class="tag">Bayesian DL</span><span class="tag">MC Dropout</span><span class="tag">UNet</span>
-          </div>
-        </div>
-        <div class="research-card" data-index="03">
-          <div class="rc-icon">◎</div>
-          <h3>Topology-Aware Learning</h3>
-          <p>Leveraging persistent homology and topological priors to preserve structural connectivity in segmentation outputs, particularly for complex anatomical boundaries.</p>
-          <div class="rc-tags">
-            <span class="tag">TDA</span><span class="tag">Homology</span><span class="tag">Boundary Opt.</span>
-          </div>
-        </div>
-        <div class="research-card" data-index="04">
-          <div class="rc-icon">⬢</div>
-          <h3>Histopathology Image Analysis</h3>
-          <p>Building topology-aware, uncertainty-quantifying deep networks for gland and tissue segmentation in histological slides, supporting automated pathology workflows.</p>
-          <div class="rc-tags">
-            <span class="tag">Histopathology</span><span class="tag">UNet++</span><span class="tag">Segmentation</span>
-          </div>
-        </div>
-      </div>
+  <!-- RESEARCH INTERESTS -->
+  <section>
+    <p class="sec-label">Research Interests</p>
+    <div class="int-list">
+      <span class="int-tag">Unsupervised Learning</span>
+      <span class="int-tag">Brain MRI Segmentation</span>
+      <span class="int-tag">Bayesian Deep Learning</span>
+      <span class="int-tag">Fuzzy Clustering</span>
+      <span class="int-tag">Topological Data Analysis</span>
+      <span class="int-tag">Uncertainty Quantification</span>
+      <span class="int-tag">Normalizing Flows</span>
+      <span class="int-tag">Medical Image Analysis</span>
     </div>
   </section>
 
   <!-- PUBLICATIONS -->
-  <section id="publications">
-    <div class="container">
-      <div class="section-label mono">03 · Publications</div>
-      <h2 class="section-title">Selected <em>Works</em></h2>
+  <section>
+    <p class="sec-label">Publications</p>
 
-      <div class="pub-filter mono">
-        <button class="pub-btn active" data-filter="all">All</button>
-        <button class="pub-btn" data-filter="published">Published</button>
-        <button class="pub-btn" data-filter="progress">In Progress</button>
+    <div class="pub">
+      <div class="pub-yr">2026</div>
+      <div>
+        <p class="pub-title">Regularized Fuzzy C-Means with Markov Random Fields for Brain Stroke Lesion Segmentation in MRI <span class="badge b-conf">Doctoral Consortium</span></p>
+        <p class="pub-authors"><b>Rasel Mondal</b></p>
+        <p class="pub-venue"><em>IEEE International Conference on Healthcare Informatics (ICHI 2026)</em></p>
       </div>
+    </div>
 
-      <div class="pub-list">
+    <div class="pub">
+      <div class="pub-yr">2026</div>
+      <div>
+        <p class="pub-title">HISTO-UNet: Histopathology Image Segmentation Using Topology-Aware UNet with Dual Uncertainty Quantification</p>
+        <p class="pub-authors">A. Dhor, E. Das, <b>R. Mondal</b>, S. Azad, V. Walke, S. K. Yadav, A. Banerjee, T. Basu</p>
+        <p class="pub-venue"><em>IEEE International Symposium on Biomedical Imaging (ISBI 2026)</em></p>
+      </div>
+    </div>
 
-        <!-- Pub 1 -->
-        <div class="pub-item" data-cat="published">
-          <div class="pub-year mono">2026</div>
-          <div class="pub-body">
-            <div class="pub-badge badge-conference">Doctoral Consortium · IEEE ICHI 2026</div>
-            <h3 class="pub-title">Regularized Fuzzy C-Means with Markov Random Fields for Brain Stroke Lesion Segmentation in MRI</h3>
-            <p class="pub-authors mono">Rasel Mondal</p>
-            <p class="pub-venue">IEEE International Conference on Healthcare Informatics (ICHI) 2026</p>
-          </div>
-        </div>
+    <div class="pub">
+      <div class="pub-yr">2025</div>
+      <div>
+        <p class="pub-title">Attention-Gated CNN and Discrete Wavelet Transform based Ensemble Framework for Brain Hemorrhage Classification</p>
+        <p class="pub-authors">S. Bhaduri, <b>R. Mondal</b>, P. Sarangi, V. K. Kurmi, S. Goyal, L. Kaushal, M. Sodani, T. Basu</p>
+        <p class="pub-venue"><em>Neuroscience Informatics</em> (CiteScore 11.7)</p>
+      </div>
+    </div>
 
-        <!-- Pub 2 -->
-        <div class="pub-item" data-cat="published">
-          <div class="pub-year mono">2026</div>
-          <div class="pub-body">
-            <div class="pub-badge badge-conference">Accepted · IEEE ISBI 2026</div>
-            <h3 class="pub-title">HISTO-UNet: Histopathology Image Segmentation Using Topology-Aware UNet with Dual Uncertainty Quantification</h3>
-            <p class="pub-authors mono">Ashim Dhor, Emily Das, Rasel Mondal, Shweta Azad, Vaishali Walke, Shakti Kumar Yadav, Abhirup Banerjee, Tanmay Basu</p>
-            <p class="pub-venue">IEEE International Symposium on Biomedical Imaging (ISBI) 2026</p>
-          </div>
-        </div>
+    <div class="pub">
+      <div class="pub-yr">2025</div>
+      <div>
+        <p class="pub-title">A Novel Regularized Fuzzy C-Means Clustering Technique for Brain MRI Segmentation <span class="badge b-review">Under Review</span></p>
+        <p class="pub-authors"><b>Rasel Mondal</b>, T. Basu</p>
+        <p class="pub-venue"><em>Biomedical Signal Processing and Control</em></p>
+      </div>
+    </div>
 
-        <!-- Pub 3 -->
-        <div class="pub-item" data-cat="published">
-          <div class="pub-year mono">2025</div>
-          <div class="pub-body">
-            <div class="pub-badge badge-journal">Journal · Cite Score 11.7</div>
-            <h3 class="pub-title">Attention-Gated CNN and Discrete Wavelet Transform based Ensemble Framework for Brain Hemorrhage Classification</h3>
-            <p class="pub-authors mono">Srutanik Bhaduri, Rasel Mondal, Prateek Sarangi, Vinod Kumar Kurmi, Swati Goyal, Lovely Kaushal, Mahek Sodani, Tanmay Basu</p>
-            <p class="pub-venue">Neuroscience Informatics Journal</p>
-          </div>
-        </div>
-
-        <!-- Pub 4 -->
-        <div class="pub-item" data-cat="published">
-          <div class="pub-year mono">2025</div>
-          <div class="pub-body">
-            <div class="pub-badge badge-submitted">Under Review</div>
-            <h3 class="pub-title">A Novel Regularized Fuzzy C-Means Clustering Technique for Brain MRI Segmentation</h3>
-            <p class="pub-authors mono">Rasel Mondal, Tanmay Basu</p>
-            <p class="pub-venue">Biomedical Signal Processing and Control Journal</p>
-          </div>
-        </div>
-
-        <!-- Pub 5 -->
-        <div class="pub-item" data-cat="published">
-          <div class="pub-year mono">2023</div>
-          <div class="pub-body">
-            <div class="pub-badge badge-chapter">Book Chapter</div>
-            <h3 class="pub-title">Fuzzy Optimization, Decision Making and Operation Research</h3>
-            <p class="pub-venue">Book Chapter</p>
-          </div>
-        </div>
-
-        <!-- WIP 1 -->
-        <div class="pub-item wip-item" data-cat="progress">
-          <div class="pub-year mono">2026</div>
-          <div class="pub-body">
-            <div class="pub-badge badge-wip">Work in Progress</div>
-            <h3 class="pub-title">BayesFlow3D: Topology-Aware Bayesian Flows for Unsupervised 3D Brain Anomaly Segmentation</h3>
-            <p class="pub-authors mono">Rasel Mondal et al.</p>
-            <p class="pub-desc">An unsupervised probabilistic framework for 3D brain anomaly segmentation using normalizing flows, topology-aware learning, and iterative Bayesian refinement.</p>
-          </div>
-        </div>
-
-        <!-- WIP 2 -->
-        <div class="pub-item wip-item" data-cat="progress">
-          <div class="pub-year mono">2026</div>
-          <div class="pub-body">
-            <div class="pub-badge badge-wip">Work in Progress</div>
-            <h3 class="pub-title">Uncertainty-Guided Adaptive Refinement for Brain Lesion Segmentation</h3>
-            <p class="pub-authors mono">Rasel Mondal et al.</p>
-            <p class="pub-desc">A stroke lesion segmentation framework that models predictive uncertainty to guide adaptive patch-based refinement and topology-constrained boundary optimization.</p>
-          </div>
-        </div>
-
+    <div class="pub">
+      <div class="pub-yr">2023</div>
+      <div>
+        <p class="pub-title">Fuzzy Optimization, Decision Making and Operation Research</p>
+        <p class="pub-venue">Book Chapter</p>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION & ACHIEVEMENTS -->
-  <section id="education">
-    <div class="container">
-      <div class="section-label mono">04 · Education & Achievements</div>
-      <div class="edu-achieve-grid">
+  <!-- WORK IN PROGRESS -->
+  <section>
+    <p class="sec-label">Work in Progress</p>
 
-        <div class="edu-col">
-          <h2 class="section-title">Education</h2>
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <span class="tl-year mono">2023 – Present</span>
-                <h3>Doctor of Philosophy</h3>
-                <p>Data Science & Engineering<br />IISER Bhopal</p>
-                <span class="tl-detail">Supervisor: Dr. Tanmay Basu</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <span class="tl-year mono">2019 – 2021</span>
-                <h3>Post Graduation (M.Sc)</h3>
-                <p>IIEST Shibpur, Howrah</p>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <span class="tl-year mono">2016 – 2019</span>
-                <h3>Graduation (B.Sc)</h3>
-                <p>Ramakrishna Mission Residential College, Narendrapur, Kolkata</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="pub">
+      <div class="pub-yr">2026</div>
+      <div>
+        <p class="pub-title">BayesFlow3D: Topology-Aware Bayesian Flows for Unsupervised 3D Brain Anomaly Segmentation <span class="badge b-wip">In Progress</span></p>
+        <p class="pub-authors"><b>Rasel Mondal</b> et al.</p>
+        <p class="pub-venue">Unsupervised probabilistic framework using normalizing flows, topology-aware learning, and iterative Bayesian refinement for 3D anomaly detection.</p>
+      </div>
+    </div>
 
-        <div class="ach-col">
-          <h2 class="section-title">Achievements</h2>
-          <div class="ach-list">
-            <div class="ach-item">
-              <span class="ach-icon">★</span>
-              <div>
-                <strong>Doctoral Consortium</strong>
-                <span class="mono">IEEE ICHI 2026</span>
-              </div>
-            </div>
-            <div class="ach-item">
-              <span class="ach-icon">★</span>
-              <div>
-                <strong>Reviewer</strong>
-                <span class="mono">ML4H Symposium 2025</span>
-              </div>
-            </div>
-            <div class="ach-item">
-              <span class="ach-icon">★</span>
-              <div>
-                <strong>Inspire Scholar</strong>
-                <span class="mono">12th to M.Sc (DST, Govt. of India)</span>
-              </div>
-            </div>
-            <div class="ach-item">
-              <span class="ach-icon">◆</span>
-              <div>
-                <strong>GATE Qualified</strong>
-                <span class="mono">AIR-659 (2022)</span>
-              </div>
-            </div>
-            <div class="ach-item">
-              <span class="ach-icon">◆</span>
-              <div>
-                <strong>JAM Qualified</strong>
-                <span class="mono">AIR-993 (2019)</span>
-              </div>
-            </div>
-            <div class="ach-item">
-              <span class="ach-icon">◆</span>
-              <div>
-                <strong>SET & TET Qualified</strong>
-                <span class="mono">2022</span>
-              </div>
-            </div>
-            <div class="ach-item">
-              <span class="ach-icon">◇</span>
-              <div>
-                <strong>NBEC 2nd Round</strong>
-                <span class="mono">National Bio Entrepreneurship Competition, C-Camp</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <div class="pub">
+      <div class="pub-yr">2026</div>
+      <div>
+        <p class="pub-title">Uncertainty-Guided Adaptive Refinement for Brain Lesion Segmentation <span class="badge b-wip">In Progress</span></p>
+        <p class="pub-authors"><b>Rasel Mondal</b> et al.</p>
+        <p class="pub-venue">Stroke lesion segmentation driven by predictive uncertainty — patch-based adaptive refinement with topology-constrained boundary optimization.</p>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-label mono">05 · Technical Skills</div>
-      <h2 class="section-title">Tools & <em>Technologies</em></h2>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h4 class="mono">Languages</h4>
-          <div class="skill-pills">
-            <span class="pill">Python</span>
-            <span class="pill">C</span>
-            <span class="pill">MATLAB</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4 class="mono">Libraries & Frameworks</h4>
-          <div class="skill-pills">
-            <span class="pill">PyTorch</span>
-            <span class="pill">TensorFlow</span>
-            <span class="pill">OpenCV</span>
-            <span class="pill">scikit-learn</span>
-            <span class="pill">NumPy</span>
-            <span class="pill">SimpleITK</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4 class="mono">Tools & Writing</h4>
-          <div class="skill-pills">
-            <span class="pill">LaTeX</span>
-            <span class="pill">Mathematica</span>
-            <span class="pill">MS Office</span>
-            <span class="pill">Git</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4 class="mono">Research Areas</h4>
-          <div class="skill-pills">
-            <span class="pill accent-pill">Medical Image Analysis</span>
-            <span class="pill accent-pill">Unsupervised Learning</span>
-            <span class="pill accent-pill">Deep Learning</span>
-            <span class="pill accent-pill">Fuzzy Systems</span>
-            <span class="pill accent-pill">Bayesian Methods</span>
-            <span class="pill accent-pill">TDA</span>
-          </div>
-        </div>
+  <!-- EDUCATION -->
+  <section>
+    <p class="sec-label">Education</p>
+
+    <div class="edu">
+      <div class="edu-yr">2023 – present</div>
+      <div>
+        <p class="edu-deg">Doctor of Philosophy</p>
+        <p class="edu-inst">IISER Bhopal · Dept. of Data Science and Engineering</p>
+        <p class="edu-note">Supervisor: Dr. Tanmay Basu</p>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-yr">2019 – 2021</div>
+      <div>
+        <p class="edu-deg">Master of Science</p>
+        <p class="edu-inst">IIEST Shibpur, Howrah</p>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-yr">2016 – 2019</div>
+      <div>
+        <p class="edu-deg">Bachelor of Science</p>
+        <p class="edu-inst">Ramakrishna Mission Residential College, Narendrapur, Kolkata</p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-label mono">06 · Contact</div>
-      <div class="contact-inner">
-        <h2 class="section-title">Let's <em>Connect</em></h2>
-        <p class="contact-sub">Open to collaborations, discussions, and research opportunities in medical image analysis, deep learning, and beyond.</p>
-        <div class="contact-links">
-          <a href="mailto:rasel23@iiserb.ac.in" class="contact-card">
-            <span class="cc-icon">✉</span>
-            <div>
-              <strong>Email</strong>
-              <span class="mono">rasel23@iiserb.ac.in</span>
-            </div>
-          </a>
-          <a href="https://github.com/" target="_blank" rel="noopener" class="contact-card">
-            <span class="cc-icon">⌥</span>
-            <div>
-              <strong>GitHub</strong>
-              <span class="mono">View my repositories</span>
-            </div>
-          </a>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="contact-card">
-            <span class="cc-icon">⊞</span>
-            <div>
-              <strong>LinkedIn</strong>
-              <span class="mono">Connect professionally</span>
-            </div>
-          </a>
-        </div>
-        <div class="contact-location mono">
-          <span>📍 IISER Bhopal, Madhya Pradesh, India</span>
-        </div>
-      </div>
+  <!-- HONOURS -->
+  <section>
+    <p class="sec-label">Honours &amp; Awards</p>
+
+    <div class="hon">
+      <div class="hon-yr">2026</div>
+      <div class="hon-text"><b>Doctoral Consortium Selection</b> — IEEE ICHI 2026</div>
+    </div>
+    <div class="hon">
+      <div class="hon-yr">2025</div>
+      <div class="hon-text"><b>Reviewer</b> — ML4H Symposium 2025</div>
+    </div>
+    <div class="hon">
+      <div class="hon-yr">2019–</div>
+      <div class="hon-text"><b>Inspire Scholarship</b> — Dept. of Science &amp; Technology, Govt. of India</div>
+    </div>
+    <div class="hon">
+      <div class="hon-yr">2022</div>
+      <div class="hon-text"><b>GATE Qualified</b> — AIR 659</div>
+    </div>
+    <div class="hon">
+      <div class="hon-yr">2019</div>
+      <div class="hon-text"><b>JAM Qualified</b> — AIR 993</div>
+    </div>
+    <div class="hon">
+      <div class="hon-yr">2022</div>
+      <div class="hon-text"><b>SET &amp; TET Qualified</b></div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="container footer-inner">
-      <span class="mono">© 2026 Rasel Mondal · IISER Bhopal</span>
-      <span class="mono footer-built">Built with pure HTML / CSS / JS</span>
-    </div>
+    Rasel Mondal · IISER Bhopal · Last updated March 2026
   </footer>
 
-  <script src="assets/js/main.js"></script>
+</div>
 </body>
 </html>
