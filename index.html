@@ -45,44 +45,124 @@
       padding: 0 44px 80px;
     }
 
-    /* ══ HEADER ════════════════════════════════════════ */
+    /* ══════════════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════════════ */
     header {
       display: grid;
-      grid-template-columns: 1fr 260px;
-      margin-bottom: 52px;
+      grid-template-columns: 130px 1fr;
+      gap: 0 36px;
+      padding: 44px 0 36px;
       border-bottom: 3px solid var(--blue);
+      margin-bottom: 52px;
+      align-items: start;
     }
 
-    .hd-main { padding: 52px 40px 36px 0; }
+    /* ── Profile photo ── */
+    .hd-photo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding-top: 4px;
+    }
+    .photo-frame {
+      width: 120px;
+      height: 150px;             /* passport ratio ~2:2.5 */
+      border-radius: 4px;
+      overflow: hidden;
+      border: 2px solid var(--rule);
+      background: #e8e6e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* placeholder shown when no image */
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--light);
+      text-align: center;
+      padding: 10px;
+    }
+    .photo-placeholder svg { opacity: 0.45; }
+    .photo-placeholder span {
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: var(--body);
+      line-height: 1.4;
+    }
+
+    /* ── Name & details ── */
+    .hd-info { display: flex; flex-direction: column; gap: 0; }
 
     .hd-name {
       font-family: var(--serif);
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.05;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      color: var(--text);
     }
+
     .hd-role {
       color: var(--muted);
-      font-size: 1.02rem;
+      font-size: 1rem;
       font-style: italic;
-      margin-bottom: 22px;
       line-height: 1.55;
+      margin-bottom: 18px;
     }
+
+    /* supervisor row */
+    .hd-supervisors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 0;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-left: 3px solid var(--blue);
+      padding-left: 12px;
+      line-height: 1.65;
+    }
+    .hd-supervisors .sv-row { width: 100%; }
+    .hd-supervisors .sv-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+      font-family: var(--body);
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .hd-supervisors a { color: var(--blue); font-style: italic; }
+
     .hd-links {
       display: flex;
       flex-wrap: wrap;
       gap: 4px 20px;
-      font-size: 0.93rem;
-      margin-bottom: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
     }
     .hd-links a   { color: var(--muted); }
     .hd-links a:hover { color: var(--blue); }
     .hd-sep       { color: var(--rule); }
+
     .hd-badge {
       display: inline-block;
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       letter-spacing: 0.06em;
       border-radius: 3px;
       padding: 4px 12px;
@@ -91,33 +171,9 @@
       border: 1px solid rgba(42,82,160,0.22);
     }
 
-    /* blue right panel */
-    .hd-panel {
-      background: var(--blue);
-      padding: 52px 28px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .hd-panel-lbl {
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.52);
-      margin-bottom: 2px;
-      font-family: var(--body);
-    }
-    .hd-panel-val {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.92);
-      font-style: italic;
-      line-height: 1.4;
-    }
-    .hd-panel-val a { color: #fff; }
-    .hd-panel-val a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    .hd-panel-hr { height: 1px; background: rgba(255,255,255,0.15); }
-
-    /* ══ BODY GRID ══════════════════════════════════════ */
+    /* ══════════════════════════════════════════════
+       BODY GRID — main + sidebar
+    ══════════════════════════════════════════════ */
     .body-grid {
       display: grid;
       grid-template-columns: 1fr 268px;
@@ -125,7 +181,7 @@
       align-items: start;
     }
 
-    /* ══ SECTIONS ══════════════════════════════════════ */
+    /* ══ SECTIONS ══════════════════════════════════ */
     section { margin-bottom: 46px; }
 
     .sec-label {
@@ -143,11 +199,11 @@
     .sl-rose  { color: var(--rose);  border-color: var(--rose); }
     .sl-gold  { color: var(--gold);  border-color: var(--gold); }
 
-    /* ── Bio ─── */
+    /* ── Bio ── */
     .bio p { margin-bottom: 10px; font-size: 1rem; }
     .bio p:last-child { margin-bottom: 0; }
 
-    /* ── Interests ─── */
+    /* ── Interests ── */
     .int-list { display: flex; flex-wrap: wrap; gap: 7px; }
     .int-tag {
       font-size: 0.83rem;
@@ -159,25 +215,14 @@
       font-style: italic;
     }
 
-    /* ── Publications ─── */
+    /* ── Publications ── */
     .pub {
       padding: 16px 0;
       border-bottom: 1px solid var(--rule);
     }
     .pub:first-of-type { border-top: 1px solid var(--rule); }
-
-    .pub-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 5px;
-      flex-wrap: wrap;
-    }
-    .pub-yr {
-      font-size: 0.77rem;
-      color: var(--light);
-      font-style: italic;
-    }
+    .pub-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+    .pub-yr   { font-size: 0.77rem; color: var(--light); font-style: italic; }
     .pub-title {
       font-family: var(--serif);
       font-size: 1.01rem;
@@ -195,14 +240,10 @@
       margin-bottom: 3px;
     }
     .pub-authors b { font-style: normal; font-weight: 500; color: var(--text); }
-    .pub-venue { font-size: 0.86rem; color: var(--muted); }
+    .pub-venue    { font-size: 0.86rem; color: var(--muted); }
     .pub-venue em { font-style: italic; }
-    .pub-links { margin-top: 6px; display: flex; gap: 14px; }
-    .pub-links a {
-      font-size: 0.76rem;
-      color: var(--blue);
-      letter-spacing: 0.03em;
-    }
+    .pub-links    { margin-top: 6px; display: flex; gap: 14px; }
+    .pub-links a  { font-size: 0.76rem; color: var(--blue); letter-spacing: 0.03em; }
     .pub-links a::before { content: '↗ '; font-size: 0.7rem; }
 
     /* badges */
@@ -224,7 +265,7 @@
     .b-gold   { color: var(--gold);  background: rgba(176,125,34,0.08); border: 1px solid rgba(176,125,34,0.25); }
     .b-rose   { color: var(--rose);  background: rgba(139,34,82,0.07);  border: 1px solid rgba(139,34,82,0.22); }
 
-    /* ── Sidebar items ─── */
+    /* ── Sidebar items ── */
     .side-item {
       padding: 10px 0;
       border-bottom: 1px solid var(--rule);
@@ -235,7 +276,7 @@
     .side-title { color: var(--text); font-weight: 500; font-size: 0.9rem; }
     .side-sub   { color: var(--muted); font-size: 0.81rem; font-style: italic; }
 
-    /* ── Education (sidebar) ─── */
+    /* ── Education ── */
     .edu-item {
       padding: 12px 0;
       border-bottom: 1px solid var(--rule);
@@ -247,7 +288,7 @@
     .edu-note { font-size: 0.75rem; color: var(--light); font-style: italic; margin-top: 4px; line-height: 1.5; }
     .edu-note a { color: var(--blue); }
 
-    /* ── Footer ─── */
+    /* ── Footer ── */
     footer {
       border-top: 1px solid var(--rule);
       padding-top: 18px;
@@ -256,30 +297,65 @@
       font-style: italic;
     }
 
-    /* ══ RESPONSIVE ═══════════════════════════════════ */
+    /* ══ RESPONSIVE ═══════════════════════════════ */
     @media (max-width: 860px) {
       .body-grid { grid-template-columns: 1fr; }
-      header { grid-template-columns: 1fr; }
-      .hd-panel { padding: 24px 28px; flex-direction: row; flex-wrap: wrap; gap: 14px 32px; }
+      header { grid-template-columns: 100px 1fr; gap: 0 24px; }
+      .photo-frame { width: 90px; height: 112px; }
     }
     @media (max-width: 600px) {
       .page { padding: 0 20px 60px; }
-      .hd-main { padding: 36px 0 24px; }
-      .hd-name { font-size: 2.1rem; }
+      header { grid-template-columns: 1fr; }
+      .hd-photo { flex-direction: row; align-items: flex-start; }
+      .hd-name { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- HEADER -->
+  <!-- ═══ HEADER ══════════════════════════════════════════ -->
   <header>
-    <div class="hd-main">
+
+    <!-- Profile photo -->
+    <div class="hd-photo">
+      <div class="photo-frame">
+        <!--
+          ╔══════════════════════════════════════════╗
+          ║  HOW TO ADD YOUR PHOTO:                  ║
+          ║                                          ║
+          ║  1. Save your passport-size photo as:    ║
+          ║     photo.jpg                            ║
+          ║     (in the same folder as index.html)   ║
+          ║                                          ║
+          ║  2. Replace the block below with:        ║
+          ║     <img src="photo.jpg"                 ║
+          ║          alt="Rasel Mondal" />           ║
+          ║                                          ║
+          ║  3. Delete the placeholder <div>         ║
+          ╚══════════════════════════════════════════╝
+        -->
+        <img src="photo.jpg" alt="Rasel Mondal" />
+
+    <!-- Name, role, supervisors, links -->
+    <div class="hd-info">
       <h1 class="hd-name">Rasel Mondal</h1>
       <p class="hd-role">
         PhD Scholar · Data Science &amp; Engineering<br />
         Indian Institute of Science Education and Research Bhopal
       </p>
+
+      <div class="hd-supervisors">
+        <div class="sv-row">
+          <span class="sv-label">Supervisor</span>
+          <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
+        </div>
+        <div class="sv-row">
+          <span class="sv-label">External</span>
+          <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a>
+        </div>
+      </div>
+
       <div class="hd-links">
         <a href="mailto:rasel23@iiserb.ac.in">rasel23@iiserb.ac.in</a>
         <span class="hd-sep">·</span>
@@ -287,35 +363,16 @@
         <span class="hd-sep">·</span>
         <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
+
       <span class="hd-badge">IEEE ICHI 2026 · Doctoral Consortium</span>
     </div>
 
-    <div class="hd-panel">
-      <div>
-        <p class="hd-panel-lbl">Supervisor</p>
-        <p class="hd-panel-val">
-          <a href="https://sites.google.com/view/tanmaybasu/" target="_blank" rel="noopener">Dr. Tanmay Basu</a>
-        </p>
-      </div>
-      <div class="hd-panel-hr"></div>
-      <div>
-        <p class="hd-panel-lbl">External Supervisor</p>
-        <p class="hd-panel-val">
-          <a href="https://sites.google.com/view/badrisubudhi/home" target="_blank" rel="noopener">Dr. Badri N. Subudhi</a>
-        </p>
-      </div>
-      <div class="hd-panel-hr"></div>
-      <div>
-        <p class="hd-panel-lbl">Institution</p>
-        <p class="hd-panel-val">IISER Bhopal, India</p>
-      </div>
-    </div>
   </header>
 
-  <!-- BODY GRID -->
+  <!-- ═══ BODY GRID ═══════════════════════════════════════ -->
   <div class="body-grid">
 
-    <!-- ── MAIN COLUMN ────────────────────────────── -->
+    <!-- MAIN COLUMN -->
     <div>
 
       <section class="bio">
@@ -431,9 +488,9 @@
         </div>
       </section>
 
-    </div><!-- /main col -->
+    </div><!-- /main -->
 
-    <!-- ── SIDEBAR ────────────────────────────────── -->
+    <!-- SIDEBAR -->
     <div>
 
       <section>
